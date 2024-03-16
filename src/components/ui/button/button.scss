@@ -1,6 +1,8 @@
 .button {
   font-family: var(--app-font-family);
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  gap: 10px;
   border-radius: var(--app-button-radius);
   min-height: var(--app-button-height);
   padding: var(--app-button-padding);
