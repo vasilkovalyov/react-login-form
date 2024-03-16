@@ -1,0 +1,9 @@
+.auth-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .button {
+    flex-grow: 1;
+  }
+}

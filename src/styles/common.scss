@@ -32,6 +32,8 @@
   font-size: var(--app-small-font-size);
   line-height: 1.33;
   color: rgb(var(--app-grey-dark));
+  margin-top: 24px;
+  margin-bottom: 24px;
 
   &::before,
   &::after {
