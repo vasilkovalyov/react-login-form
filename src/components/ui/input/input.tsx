@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import cn from 'classnames';
 import { useFormContext } from 'react-hook-form';
 import { InputProps } from './input.type';
 
@@ -11,7 +12,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const { name, label, ...rest } = props;
 
     return (
-      <label className="input-box">
+      <label className={cn('input-box', { 'input-box--error': errorMessage })}>
         {label && <p className="input-box__label-text">{label}</p>}
         <div className="input-box__inner">
           <input
@@ -22,7 +23,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {...rest}
           />
         </div>
-        {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage && (
+          <p className="input-box__error-message">{errorMessage}</p>
+        )}
       </label>
     );
   }

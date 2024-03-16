@@ -1,4 +1,5 @@
 import { forwardRef, useState } from 'react';
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
 import { PasswordProps } from './password.type';
@@ -9,14 +10,18 @@ import { Icon, IconEnum } from '../icon';
 import './password.scss';
 
 const Password = forwardRef<HTMLInputElement, PasswordProps>(
-  ({ id, type, value, errorMessage, infoLink, ...props }, ref) => {
+  (
+    { id, type, value, errorMessage, infoLink, isVisible = false, ...props },
+    ref
+  ) => {
     const { name, label, ...rest } = props;
     const { register } = useFormContext();
 
-    const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false);
+    const [isVisiblePassword, setIsVisiblePassword] =
+      useState<boolean>(isVisible);
 
     return (
-      <label className="input-box">
+      <label className={cn('input-box', { 'input-box--error': errorMessage })}>
         {label && <p className="input-box__label-text">{label}</p>}
         <div className="input-box__inner">
           <input
@@ -37,7 +42,9 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             />
           </Button>
         </div>
-        {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage && (
+          <p className="input-box__error-message">{errorMessage}</p>
+        )}
         {infoLink && (
           <div className="input-box__info-container">
             <Link to={infoLink.path} className="input-box__link">

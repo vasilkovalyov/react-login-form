@@ -44,4 +44,11 @@
     line-height: 1.33;
     text-align: right;
   }
+
+  &__error-message {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(var(--app-red));
+  }
 }

@@ -5,6 +5,7 @@ export type PasswordProps = {
   className?: string;
   label?: string;
   name: string;
+  isVisible?: boolean;
   helperLink?: {
     text: string;
     href: string;
