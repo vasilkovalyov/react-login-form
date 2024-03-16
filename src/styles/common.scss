@@ -1,0 +1,33 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.auth-form {
+  &__bottom-info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+}
+
+.devider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.33;
+  color: rgb(var(--app-grey-dark));
+
+  &::before,
+  &::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: rgb(var(--app-grey-dark));
+  }
+}
