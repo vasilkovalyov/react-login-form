@@ -9,6 +9,9 @@ body {
   font-size: var(--app-base-font-size);
   font-weight: var(--app-base-font-weight);
   line-height: 1.4;
+  font-family: 'Roboto', monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 a {
