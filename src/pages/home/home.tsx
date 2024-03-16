@@ -1,10 +1,25 @@
+import { Button } from '@/src/components/ui';
 import { Page } from '@/src/constants/pages';
-import { Link } from 'react-router-dom';
+import { useAppSelector } from '@/src/redux';
 
 export default function HomePage() {
+  const userStore = useAppSelector((store) => store.userSlice);
+
   return (
-    <div>
-      <Link to={Page.LOGIN}>Login</Link>
+    <div className="button-wrapper">
+      <Button variant="fill" href={Page.LOGIN}>
+        Login
+      </Button>
+      {userStore.isAuth && (
+        <>
+          <Button variant="fill" href={Page.NEW_PASSWORD}>
+            New password
+          </Button>
+          <Button variant="fill" href={Page.LOGIN}>
+            Log out
+          </Button>
+        </>
+      )}
     </div>
   );
 }

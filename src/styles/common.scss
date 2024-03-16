@@ -5,6 +5,12 @@
   margin: 0 auto;
 }
 
+.button-wrapper {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
 .auth-form {
   &__bottom-info {
     margin-top: 20px;
