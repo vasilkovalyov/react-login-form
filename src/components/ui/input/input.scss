@@ -6,6 +6,7 @@
   &__label-text {
     margin-bottom: 8px;
     letter-spacing: -0.024em;
+    font-size: var(--app-medium-font-size);
   }
 
   &__inner {
@@ -47,7 +48,7 @@
 
   &__error-message {
     margin-top: 4px;
-    font-size: 12px;
+    font-size: var(--app-small-font-size);
     font-weight: 400;
     color: rgb(var(--app-red));
   }

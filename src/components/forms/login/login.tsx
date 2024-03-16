@@ -48,12 +48,9 @@ function LoginForm() {
           <Button variant="fill" fullwidth>
             Log in to Qencode
           </Button>
-          <div className="auth-form__bottom-info">
-            <p>
-              Is your company new to Qencode?{' '}
-              <Link to={Page.HOME}>Sign up</Link>
-            </p>
-          </div>
+          <p className="auth-form__bottom-info">
+            Is your company new to Qencode? <Link to={Page.HOME}>Sign up</Link>
+          </p>
         </form>
       </FormProvider>
     </div>

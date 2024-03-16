@@ -6,14 +6,19 @@
   --app-black-2: 26 25 25; // #1A1919
   --app-grey-light: 190 197 204; // #E3E6E9
   --app-grey-dark: 227 230 233; // #BEC5CC
+  --app-blue-dark: 103 113 123; // #67717B
   --app-red: 255 0 0; // #FF0000
+
+  --app-font-family: 'Roboto', monospace;
 
   --app-color-primary: rgb(var(--app-blue));
   --app-color-primary-hover: rgb(var(--app-blue) / 0.8);
   --app-color-dark: rgb(var(--app-black));
   --app-color-light: rgb(var(--app-white));
 
-  --app-base-font-size: 15px;
+  --app-small-font-size: 12px;
+  --app-base-font-size: 14px;
+  --app-medium-font-size: 15px;
   --app-base-font-weight: 500;
 
   --app-input-border: rgb(211 216 220);
