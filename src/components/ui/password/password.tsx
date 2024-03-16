@@ -1,4 +1,5 @@
 import { forwardRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
 import { PasswordProps } from './password.type';
 import { Button } from '../button';
@@ -39,9 +40,9 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         {errorMessage && <p>{errorMessage}</p>}
         {infoLink && (
           <div className="input-box__info-container">
-            <a href={infoLink.path} className="input-box__link">
+            <Link to={infoLink.path} className="input-box__link">
               {infoLink.text}
-            </a>
+            </Link>
           </div>
         )}
       </label>
