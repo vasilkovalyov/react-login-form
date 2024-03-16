@@ -1,0 +1,47 @@
+.input-box {
+  display: block;
+  margin-bottom: 24px;
+  text-align: left;
+
+  &__label-text {
+    margin-bottom: 8px;
+    letter-spacing: -0.024em;
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__field {
+    position: relative;
+    border-radius: var(--app-input-radius);
+    border: 1px solid var(--app-input-border);
+    padding: var(--app-input-padding);
+    height: var(--app-input-height);
+    color: var(--app-input-color);
+    font-size: var(--app-input-size);
+    line-height: 1.33;
+    outline: none;
+    width: 100%;
+
+    &:focus {
+      border-color: var(--app-color-dark);
+    }
+
+    &::placeholder {
+      color: var(--app-input-placeholder-color);
+    }
+  }
+
+  &__info-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  &__link {
+    line-height: 1.33;
+    text-align: right;
+  }
+}
