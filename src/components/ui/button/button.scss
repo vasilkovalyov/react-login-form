@@ -1,0 +1,45 @@
+.button {
+  border-radius: var(--app-button-radius);
+  min-height: var(--app-button-height);
+  padding: var(--app-button-padding);
+  font-size: var(--app-button-size);
+  background-color: transparent;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: color var(--app-transition-speed) linear,
+    background-color var(--app-transition-speed) linear;
+
+  &--fullwidth {
+    width: 100%;
+  }
+
+  &--fill {
+    color: var(--app-color-light);
+    background-color: var(--app-color-primary);
+    border: none;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--app-color-primary-hover);
+      }
+    }
+  }
+
+  &--outline {
+    color: var(--app-black);
+    border: 1px solid rgb(var(--app-grey));
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--app-color-light);
+        background-color: var(--app-color-dark);
+      }
+    }
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+}
