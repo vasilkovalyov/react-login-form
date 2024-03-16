@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { ButtonProps } from './button.types';
 
@@ -10,6 +11,7 @@ const Button = ({
   children,
   fullwidth,
   disabled,
+  href,
   ...props
 }: ButtonProps) => {
   const cnVariant = cn({
@@ -26,6 +28,14 @@ const Button = ({
     cnVariant,
     className
   );
+
+  if (href) {
+    return (
+      <Link to={href} className={classname}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button

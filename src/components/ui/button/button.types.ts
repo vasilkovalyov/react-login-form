@@ -8,4 +8,5 @@ export type ButtonProps = {
   isLoading?: boolean;
   children?: React.ReactNode;
   fullwidth?: boolean;
+  href?: string;
 } & Partial<ButtonHTMLAttributes<HTMLButtonElement>>;
