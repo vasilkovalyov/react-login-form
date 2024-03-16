@@ -9,10 +9,12 @@ export interface IUserState {
   isAuth: boolean;
 }
 
+const defaultUserState: IUserStore = {
+  email: '',
+};
+
 const initialState: IUserState = {
-  user: {
-    email: '',
-  },
+  user: defaultUserState,
   isAuth: false,
   loading: false,
   error: null,
@@ -26,7 +28,10 @@ export const userSlice = createSlice({
       state.error = null;
     },
     updateUser: (state, action: PayloadAction<IUserStore>) => {},
-    logoutUser: (state) => {},
+    logoutUser: (state) => {
+      state.isAuth = false;
+      state.user = defaultUserState;
+    },
   },
 });
 
