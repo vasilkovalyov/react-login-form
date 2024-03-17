@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AxiosError } from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Page } from '@/src/constants/pages';
 import { apiLogin } from '@/src/api/auth';
@@ -12,8 +12,14 @@ import { LoginExtendedType } from './login.type';
 
 import LoginSimpleForm from './login-simple';
 import LoginExtendedForm from './login-extended';
+import { updateUser, useAppDispatch } from '@/src/redux';
+import { Status } from '@/src/constants/response-status';
+import { LocaleStorageKeys } from '@/src/types/local-storage';
 
 function LoginForm() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { isLoading, errorMessage, setErrorMessage, setIsLoading } =
     useAuthApiInfo();
   const [email, setEmail] = useState<string | null>();
@@ -26,7 +32,22 @@ function LoginForm() {
     try {
       setIsLoading(true);
       const response = await apiLogin(email, password);
-      console.log('response', response);
+      if (response.status === Status.SUCCESS) {
+        dispatch(updateUser());
+        localStorage.setItem(
+          LocaleStorageKeys.ACCESS_TOKEN,
+          response.data.access_token
+        );
+        localStorage.setItem(
+          LocaleStorageKeys.REFRESH_TOKEN,
+          response.data.refresh_token
+        );
+        localStorage.setItem(
+          LocaleStorageKeys.TOKEN_EXPIRE,
+          response.data.token_expire.toString()
+        );
+        navigate(Page.HOME);
+      }
     } catch (e) {
       if (e instanceof AxiosError) {
         const detail: ApiErrorDetails = e.response?.data.detail;

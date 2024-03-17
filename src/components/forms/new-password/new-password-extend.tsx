@@ -67,7 +67,7 @@ function NewPasswordExtendForm() {
           errorMessage={errors?.confirm_password?.message}
         />
         <Button isLoading={isLoading} variant="fill" fullwidth>
-          Reset Password
+          {isLoading ? 'Loading...' : 'Reset Password'}
         </Button>
         {errorMessage && (
           <p className="auth-form__error-message">{errorMessage}</p>

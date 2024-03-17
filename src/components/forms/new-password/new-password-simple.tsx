@@ -55,15 +55,10 @@ function NewPasswordSimpleForm({ onSubmitForm }: NewPasswordSimpleFormProps) {
           placeholder="Enter your email"
           errorMessage={errors?.email?.message}
         />
-        <Button variant="fill" fullwidth>
-          Send
+        <Button isLoading={isLoading} variant="fill" fullwidth>
+          {isLoading ? 'Loading...' : 'Send'}
         </Button>
-        <Button
-          isLoading={isLoading}
-          href={Page.LOGIN}
-          variant="outline"
-          fullwidth
-        >
+        <Button href={Page.LOGIN} variant="outline" fullwidth>
           Cancel
         </Button>
         {errorMessage && (

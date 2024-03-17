@@ -49,7 +49,7 @@ function LoginExtendedForm({
           }}
         />
         <Button isLoading={isLoading} variant="fill" fullwidth>
-          Log in to Qencode
+          {isLoading ? 'Loading...' : 'Log in to Qencode'}
         </Button>
       </form>
     </FormProvider>
