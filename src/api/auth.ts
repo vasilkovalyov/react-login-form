@@ -30,3 +30,17 @@ export async function apiSetPassword(
   });
   return response;
 }
+
+export async function accessToken(id: string) {
+  const response = await api.post(EndpointsEnum.ACCESS_TOKEN, {
+    access_id: id,
+  });
+  return response;
+}
+
+export async function refreshToken(token: string) {
+  const response = await api.post(EndpointsEnum.REFRESH_TOKEN, {
+    refresh_token: token,
+  });
+  return response;
+}
