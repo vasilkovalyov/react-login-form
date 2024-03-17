@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { Page } from '@/src/constants/pages';
-import { isExpireAccessToken } from '@/src/utils/common';
+import { getAccessTokenFromLS } from '@/src/utils/local-storage';
 
 export default function PrivateLayout() {
-  if (isExpireAccessToken()) {
+  if (!getAccessTokenFromLS()) {
     return <Navigate to={Page.LOGIN} replace={true} />;
   }
 
