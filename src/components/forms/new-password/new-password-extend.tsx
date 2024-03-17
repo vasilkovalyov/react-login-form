@@ -41,7 +41,7 @@ function NewPasswordExtendForm() {
         detail && setErrorMessage(getMessageFromDetailError(detail));
       }
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   }
 

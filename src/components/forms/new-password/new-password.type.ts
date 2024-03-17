@@ -4,7 +4,7 @@ export type NewPasswordType = {
 };
 
 export type NewPasswordSimpleFormProps = {
-  onSubmitForm: (email: string) => void;
+  onSubmitForm: (email: string, infoMessage: string) => void;
 };
 
 export type NewPasswordSimpleType = {

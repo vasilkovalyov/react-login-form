@@ -19,6 +19,12 @@ type TokenResponseType = {
   refresh_token_expire: number;
 };
 
+type ResetPasswordResponseType = {
+  detail: string;
+  error: number;
+  timestamp: number;
+};
+
 export async function apiLogin(
   email: string,
   password: string
@@ -30,7 +36,9 @@ export async function apiLogin(
   return response;
 }
 
-export async function apiResetPassword(email: string) {
+export async function apiResetPassword(
+  email: string
+): AxiosPromise<ResetPasswordResponseType> {
   const response = await api.post(EndpointsEnum.PASSWORD_RESET, {
     email,
     redirect_url: `${import.meta.env.VITE_API_URL}/password-set`,

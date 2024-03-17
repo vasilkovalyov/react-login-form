@@ -33,8 +33,7 @@ function NewPasswordSimpleForm({ onSubmitForm }: NewPasswordSimpleFormProps) {
     try {
       setIsLoading(true);
       const response = await apiResetPassword(data.email);
-      console.log(response);
-      onSubmitForm(data.email);
+      onSubmitForm(data.email, response.data.detail);
     } catch (e) {
       if (e instanceof AxiosError) {
         const detail: ApiErrorDetails = e.response?.data.detail;

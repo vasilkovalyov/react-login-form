@@ -4,9 +4,11 @@ import NewPasswordSimpleForm from './new-password-simple';
 
 function NewPasswordForm() {
   const [email, setEmail] = useState<string | null>(null);
+  const [infoMessage, setInfoMessage] = useState<string | null>(null);
 
-  function onSubmitForgotPassword(email: string) {
+  function onSubmitForgotPassword(email: string, infoMessage: string) {
     setEmail(email);
+    setInfoMessage(infoMessage);
   }
 
   return (
@@ -14,7 +16,10 @@ function NewPasswordForm() {
       {!email ? (
         <NewPasswordSimpleForm onSubmitForm={onSubmitForgotPassword} />
       ) : (
-        <NewPasswordExtendForm />
+        <>
+          <p className="auth-form__info-message">{infoMessage}</p>
+          <NewPasswordExtendForm />
+        </>
       )}
     </div>
   );

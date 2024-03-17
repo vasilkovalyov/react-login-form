@@ -12,6 +12,10 @@
 }
 
 .auth-form {
+  &__info-message {
+    margin-bottom: 20px;
+  }
+
   &__bottom-info {
     margin-top: 20px;
     margin-bottom: 20px;
