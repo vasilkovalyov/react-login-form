@@ -1,6 +1,6 @@
-import { Button } from '@/src/components/ui';
-import { Page } from '@/src/constants/pages';
-import { useAppDispatch, useAppSelector, logoutUser } from '@/src/redux';
+import { Button } from 'src/components/ui';
+import { Page } from 'src/constants/pages';
+import { useAppDispatch, useAppSelector, logoutUser } from 'src/redux';
 
 export default function HomePage() {
   const dispatch = useAppDispatch();

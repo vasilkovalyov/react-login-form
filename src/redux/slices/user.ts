@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { LocaleStorageKeys } from '@/src/types/local-storage';
+import { LocaleStorageKeys } from 'src/types/local-storage';
 
 export interface IUserState {
   loading: boolean;

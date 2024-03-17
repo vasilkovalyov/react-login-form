@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { updateUser, useAppDispatch } from '@/src/redux';
-import { getAccessTokenFromLS } from '@/src/utils/local-storage';
+import { updateUser, useAppDispatch } from 'src/redux';
+import { getAccessTokenFromLS } from 'src/utils/local-storage';
 
 function PublicLayout() {
   const dispatch = useAppDispatch();

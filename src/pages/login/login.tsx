@@ -1,6 +1,6 @@
-import { LoginForm } from '@/src/components/forms';
-import { Button, Icon, IconEnum } from '@/src/components/ui';
-import { AuthLayout } from '@/src/layouts';
+import { LoginForm } from 'src/components/forms';
+import { Button, Icon, IconEnum } from 'src/components/ui';
+import { AuthLayout } from 'src/layouts';
 
 import googleIcon from 'src/assets/google.svg';
 

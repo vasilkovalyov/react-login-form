@@ -7,8 +7,8 @@ import {
   PageNotFound,
   PageHome,
 } from 'src/pages';
-import { Page } from '../constants/pages';
-import { PublicLayout, PrivateLayout } from '../layouts';
+import { Page } from 'src/constants/pages';
+import { PublicLayout, PrivateLayout } from 'src/layouts';
 
 const router = createBrowserRouter([
   {
