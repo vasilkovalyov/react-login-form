@@ -3,13 +3,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {
   PageLogin,
   PageForgotPassword,
-  PageNewPassword,
   PageNotFound,
   PageHome,
 } from 'src/pages';
 import { Page } from '../constants/pages';
 import { PublicLayout } from '../layouts';
-import PrivateRoute from './private-router';
 
 const router = createBrowserRouter([
   {
@@ -42,17 +40,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: Page.NEW_PASSWORD,
-    element: <PrivateRoute component={<PublicLayout />} />,
-    children: [
-      {
-        index: true,
-        element: <PageNewPassword />,
-      },
-    ],
-  },
-
   { path: '*', element: <PageNotFound /> },
 ]);
 
