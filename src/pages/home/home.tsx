@@ -12,9 +12,6 @@ export default function HomePage() {
       </Button>
       {userStore.isAuth && (
         <>
-          <Button variant="fill" href={Page.NEW_PASSWORD}>
-            New password
-          </Button>
           <Button variant="fill" href={Page.LOGIN}>
             Log out
           </Button>

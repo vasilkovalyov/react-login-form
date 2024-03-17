@@ -1,12 +1,17 @@
 import * as yup from 'yup';
 import { passwordRegex } from '@/src/utils/password-validation-schema';
+import { validation } from '@/src/constants/validation-message';
 
 export const newPasswordValidationSchema = yup.object().shape({
   password: yup
     .string()
-    .matches(passwordRegex, 'Password must be at least 8 characters long')
-    .required('Password is required'),
+    .matches(passwordRegex, validation.passwordValidMessage)
+    .required(validation.passwordInvalid),
   confirm_password: yup
     .string()
     .oneOf([yup.ref('password')], 'Passwords must match'),
+});
+
+export const emailValidationSchema = yup.object().shape({
+  email: yup.string().email().required(validation.emailInvalid),
 });
