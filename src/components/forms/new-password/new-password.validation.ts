@@ -9,7 +9,8 @@ export const newPasswordValidationSchema = yup.object().shape({
     .required(validation.passwordInvalid),
   confirm_password: yup
     .string()
-    .oneOf([yup.ref('password')], 'Passwords must match'),
+    .oneOf([yup.ref('password')], validation.confirmPasswordMatchInvalid)
+    .required(validation.confirmPasswordInvalid),
 });
 
 export const emailValidationSchema = yup.object().shape({

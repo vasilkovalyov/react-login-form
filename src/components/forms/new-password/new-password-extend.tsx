@@ -34,6 +34,7 @@ function NewPasswordExtendForm() {
         data.password,
         data.confirm_password
       );
+      console.log(response);
     } catch (e) {
       if (e instanceof AxiosError) {
         const detail: ApiErrorDetails = e.response?.data.detail;

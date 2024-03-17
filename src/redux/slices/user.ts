@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { IUserStore } from '../types/user';
 
@@ -27,7 +27,6 @@ export const userSlice = createSlice({
     userLoading: (state) => {
       state.error = null;
     },
-    updateUser: (state, action: PayloadAction<IUserStore>) => {},
     logoutUser: (state) => {
       state.isAuth = false;
       state.user = defaultUserState;
@@ -35,5 +34,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { userLoading, updateUser, logoutUser } = userSlice.actions;
+export const { userLoading, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
