@@ -18,6 +18,19 @@
     font-weight: 400;
   }
 
+  &__error-message {
+    color: var(--app-color-light);
+    padding: 10px;
+    min-height: 48px;
+    border: 1px solid rgb(var(--app-red));
+    background-color: rgb(var(--app-red));
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
   .button {
     margin-bottom: 20px;
   }

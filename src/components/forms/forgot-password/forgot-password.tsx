@@ -1,12 +1,23 @@
+import { AxiosError } from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input, Button } from '@/src/components/ui';
+import { apiResetPassword } from '@/src/api/auth';
 import { Page } from '@/src/constants/pages';
-import { forgotPasswordValidationSchema } from './forgot-password.validation';
+import { useAuthApiInfo } from '@/src/hooks/authApiInfo';
 
-function ForgotPasswordForm() {
-  const methods = useForm({
+import { forgotPasswordValidationSchema } from './forgot-password.validation';
+import {
+  ForgotPasswordFormProps,
+  ForgotPasswordType,
+} from './forgot-password.type';
+
+function ForgotPasswordForm({ onSubmitForm }: ForgotPasswordFormProps) {
+  const { isLoading, errorMessage, setErrorMessage, setIsLoading } =
+    useAuthApiInfo();
+
+  const methods = useForm<ForgotPasswordType>({
     mode: 'onSubmit',
     resolver: yupResolver(forgotPasswordValidationSchema),
   });
@@ -16,9 +27,19 @@ function ForgotPasswordForm() {
     formState: { errors },
   } = methods;
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  async function onSubmit(data: ForgotPasswordType) {
+    try {
+      setIsLoading(true);
+      const response = await apiResetPassword(data.email);
+      onSubmitForm(data.email);
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        setErrorMessage(e.response?.data.detail);
+      }
+    } finally {
+      setIsLoading(true);
+    }
+  }
 
   return (
     <div className="auth-form">
@@ -34,9 +55,17 @@ function ForgotPasswordForm() {
           <Button variant="fill" fullwidth>
             Send
           </Button>
-          <Button href={Page.LOGIN} variant="outline" fullwidth>
+          <Button
+            isLoading={isLoading}
+            href={Page.LOGIN}
+            variant="outline"
+            fullwidth
+          >
             Cancel
           </Button>
+          {errorMessage && (
+            <p className="auth-form__error-message">{errorMessage}</p>
+          )}
         </form>
       </FormProvider>
     </div>

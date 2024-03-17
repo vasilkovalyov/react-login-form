@@ -1,11 +1,19 @@
+import { AxiosError } from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Password, Button } from '@/src/components/ui';
-import { newPasswordValidationSchema } from './new-password.validation';
+import { apiSetPassword } from '@/src/api/auth';
+import { useAuthApiInfo } from '@/src/hooks/authApiInfo';
 
-function NewPasswordForm() {
-  const methods = useForm({
+import { newPasswordValidationSchema } from './new-password.validation';
+import { NewPasswordFormProps, NewPasswordType } from './new-password.type';
+
+function NewPasswordForm({ email }: NewPasswordFormProps) {
+  const { isLoading, errorMessage, setErrorMessage, setIsLoading } =
+    useAuthApiInfo();
+
+  const methods = useForm<NewPasswordType>({
     mode: 'onSubmit',
     resolver: yupResolver(newPasswordValidationSchema),
   });
@@ -15,9 +23,23 @@ function NewPasswordForm() {
     formState: { errors },
   } = methods;
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  async function onSubmit(data: NewPasswordType) {
+    try {
+      setIsLoading(true);
+      const response = await apiSetPassword(
+        '',
+        '',
+        data.password,
+        data.confirm_password
+      );
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        setErrorMessage(e.response?.data.detail);
+      }
+    } finally {
+      setIsLoading(true);
+    }
+  }
 
   return (
     <div className="auth-form">
@@ -30,7 +52,7 @@ function NewPasswordForm() {
             placeholder="Password"
             label="Password"
             isVisible={true}
-            errorMessage={errors?.password?.message}
+            errorMessage={errors.password?.message}
           />
           <Password
             {...register('confirm_password')}
@@ -41,9 +63,12 @@ function NewPasswordForm() {
             isVisible={true}
             errorMessage={errors?.confirm_password?.message}
           />
-          <Button variant="fill" fullwidth>
+          <Button isLoading={isLoading} variant="fill" fullwidth>
             Reset Password
           </Button>
+          {errorMessage && (
+            <p className="auth-form__error-message">{errorMessage}</p>
+          )}
         </form>
       </FormProvider>
     </div>
