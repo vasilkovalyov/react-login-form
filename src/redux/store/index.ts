@@ -1,7 +1,7 @@
-import { combineReducers } from "redux";
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { combineReducers } from 'redux';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
-import { userSlice } from "../slices";
+import { userSlice } from '../slices';
 
 const rootReducer = combineReducers({
   [userSlice.name]: userSlice.reducer,
@@ -14,8 +14,8 @@ export const makeStore = () =>
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppState = ReturnType<AppStore["getState"]>;
-export type AppDispatch = AppStore["dispatch"];
+export type AppState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
