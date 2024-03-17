@@ -2,12 +2,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import {
   PageLogin,
+  PageAdmin,
   PageForgotPassword,
   PageNotFound,
   PageHome,
 } from 'src/pages';
 import { Page } from '../constants/pages';
-import { PublicLayout } from '../layouts';
+import { PublicLayout, PrivateLayout } from '../layouts';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,16 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <PageLogin />,
+      },
+    ],
+  },
+  {
+    path: Page.ADMIN,
+    element: <PrivateLayout />,
+    children: [
+      {
+        index: true,
+        element: <PageAdmin />,
       },
     ],
   },
